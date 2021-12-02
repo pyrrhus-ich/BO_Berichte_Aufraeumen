@@ -1,9 +1,10 @@
 Sinn dieses Scriptes ist es den Ordner in dem die BO Berichte abgelegt sind regelmäßig aufzuräumen
 
 Vorbedingungen:
+-----------------
 - Python 3.xxx ist auf dem Ausführendem Rechner installiert
 - path ist gesetzt
-- Aufzuräumendes LW ist verknüpft
+- Aufzuräumendes LW ist verknüpft und in 'run.py' als 'startLw' gesetzt
 - In 'run.py' sind die Werte für das verschieben und löschen gesetzt. Diese Werte können geändert werden
     ACHTUNG alle Werte sind Tage 
     Werte ab denen die Dateien VERSCHOBEN werden - relevant fuer clearDict()
@@ -17,6 +18,7 @@ Vorbedingungen:
     caJahr=3300
 
 Ablauf:
+-------
 - Doppelclick auf run.py
 - Es öffnet sich die Console
 - Schauen was dort steht und dies dann auch machen

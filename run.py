@@ -1,6 +1,8 @@
 from scripte.verzeichnisAufraeumen import clearDict
 from scripte.archivAufraeumen import clearArchiv
 
+startLw="x:\\BO_Berichte\\"
+
 # ACHTUNG alle Werte sind Tage 
 #Werte ab denen die Dateien VERSCHOBEN werden - relevant fuer clearDict()
 cdTag=10
@@ -13,6 +15,6 @@ caMonat=360
 caJahr=3300
 
 input("Wenn es los gehen kann 'ENTER' ==>>>")
-clearDict("x:\\BO_Berichte\\",cdTag,cdMonat,cdTag)
-clearArchiv("x:\\BO_Berichte\\",caTag,caMonat,caJahr)
+clearDict(startLw,cdTag,cdMonat,cdTag)
+clearArchiv(startLw,caTag,caMonat,caJahr)
 input("Ich bin  FERTIG Das Fenster kann jetzt geschlossen werden")
