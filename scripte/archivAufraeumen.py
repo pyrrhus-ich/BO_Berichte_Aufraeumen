@@ -4,11 +4,10 @@ from .loghandler import logger as lg
 from.loghandler import logFile
 
 '''
-Erstellt am 01.12.2021
-Räumt das Verzeichnis 'BO_Berichte' auf dem Servicelaufwerk auf. Dabei ist wichtig , das die Zeitgesteuerten Bericht die folgenden Strings im Namen haben
+Erstellt am 0.12.2021
+Räumt die Archivordner auf dem Servicelaufwerk auf. Dabei ist wichtig , das die Zeitgesteuerten Bericht die folgenden Strings im Namen haben
 # Tag, Monat, Quartal, Jahr => je nach ausführungsintervall
-Anschliessend werden die Files nach ablauf dieser Zeit erst mal in den Archivordner verschoben.
-Nach einer gewissen Zeit werden die Dateien dann aus den Archivordnern gelöscht
+Anschliessend werden die Files nach ablauf dieser Zeit geloescht.
 '''
 
 
