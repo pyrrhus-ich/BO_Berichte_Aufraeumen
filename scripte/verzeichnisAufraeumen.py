@@ -24,33 +24,37 @@ def clearDict(startverzeichnis, Tgl, Mtl, Jrl):
     maxTimeJrl = datetime.now() - timedelta(days=Jrl)
     unterVerzeichnisse = os.listdir(workdir)
     cnt=0
-    lg.info("Die folgenden Verzeichnisse werden gelesen :")
+    #lg.info("Die folgenden Verzeichnisse werden gelesen :")
     for verzeichnis in unterVerzeichnisse:
-        lg.info("Verzeichnis : {}".format(verzeichnis))
+        #lg.info("Verzeichnis : {}".format(verzeichnis))
         dateien = os.listdir(workdir + verzeichnis + "/")
+        #Hier beginnt die Prüfung auf das Archiv Verzeichnis
+        if not os.path.exists(workdir + verzeichnis + "/arc/"):
+            os.makedirs(workdir + verzeichnis + "/arc/")
+        # Ende Prüfung Archivverzeichnis
         for datei in dateien: 
             if datei != "arc":                                       # der Archivordner soll erst mal noch nicht beachtet werden
                 datName = workdir + verzeichnis + "/" + datei        #dateiname jede reinzelnen Datei incl. Verzeichnispfad
                 arcDatName = workdir + verzeichnis + "/arc/" + datei #dateiname im Archivordner incl. Verzeichnispfad
                 dateiZeit = datetime.fromtimestamp(os.path.getmtime(datName)) 
                 if datei.find("Tag") > 0: # prüft ob der jeweilige Dateiname Tag|Monat|Quartal|Jahr enthält und verschiebt dann entsprechend der festlegung
-                    lg.info('Datei {} gefunden'.format(datei))
+                    #lg.info('Datei {} gefunden'.format(datei))
                     if dateiZeit < maxTimeTgl:
                         shutil.move(datName, arcDatName + datei)
                         cnt+=1
-                        lg.info("{} wurde verschoben nach {}".format(datei, arcDatName))
+                        #lg.info("{} wurde verschoben nach {}".format(datei, arcDatName))
                 elif datei.find("Monat") > 1 or datei.find("Quartal") > 1:
-                    lg.info('Datei {} gefunden'.format(datei))
+                    #lg.info('Datei {} gefunden'.format(datei))
                     if dateiZeit < maxTimeMtl:
                         shutil.move(datName, arcDatName + datei)
                         cnt+=1
-                        lg.info("{} wurde verschoben nach {}".format(datei, arcDatName))
+                        #lg.info("{} wurde verschoben nach {}".format(datei, arcDatName))
                 elif datei.find("Jahr") > 1:
-                    lg.info('Datei {} gefunden'.format(datei))
+                    #lg.info('Datei {} gefunden'.format(datei))
                     if dateiZeit < maxTimeJrl:
                         shutil.move(datName, arcDatName + datei)
                         cnt+=1
-                        lg.info("{} wurde verschoben nach {}".format(datei, arcDatName))
+                        #lg.info("{} wurde verschoben nach {}".format(datei, arcDatName))
     if cnt==0:
         lg.info("Keine Datei zum Verschieben gefunden") 
     else:
